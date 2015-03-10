@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html ng-app="testApp">
+<head>
+    <meta charset="utf-8">
+    <title>Test Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    
+</head>
+<body>
+    <div ng-controller="testDemoCtrl">
+    	<div class="container" style="margin-top: 50px" ng-controller="testDemoCtrl">
+            <div class="row">
+        		<div class="span4 offset4 well">
+        			<form ng-submit="submit(myForm.$valid)" name="myForm">
+                        <h4>Basic Info</h4>
+            			<input type="text" class="span4" name="fname" ng-model="fname" placeholder="First Name" required>
+                        <input type="text" class="span4" name="lname" ng-model="lname" placeholder="Last Name" required>
+                        <input type="text" class="span4" name="pbirth" ng-model="pbirth" placeholder="Place of Birth" required>
+                        <input type="date" class="span4" name="dbirth" ng-model="dbirth" placeholder="Date of Birth" required>
+                        <input type="text" class="span4" name="address" ng-model="address" placeholder="Current Address" required>
+                        <input type="email" class="span4" name="email" ng-model="email" placeholder="Email Address" required>
+                        <input type="email" class="span4" name="cEmail" ng-model="cEmail" placeholder="Confirm Email" required compare-to="email">
+                        <p ng-show="myForm.cEmail.$error.compareTo">email not match</p>
+
+            			<hr>
+                        <h4>EMPLOYMENT INFO</h4>
+                        <div ng-repeat="empInfo in empInfos">
+                            <input type="text" class="span4" name="cname" ng-model="empInfo.cnameVal" placeholder="{{empInfo.cname}}" required>
+                            <input type="text" class="span4" name="cAddr" ng-model="empInfo.cAddrVal" placeholder="{{empInfo.cAddr}}" required>
+                            <input type="number" class="span4" name="pnumber" ng-model="empInfo.pnumberVal" placeholder="{{empInfo.pnumber}}" required>
+                            <hr>
+                        </div>
+                        <button type="button" class="btn btn-default" ng-click="addInfo()">
+                          Add Another Employment Info
+                        </button>
+                        <hr>
+                        <h4>SKILL INFO</h4>
+                        <div ng-repeat="skillInfo in skillInfos" required>
+                            <input type="text" class="span4" name="skname" ng-model="skillInfo.sknameVal" placeholder="Skill Name" required>
+                            <input type="number" class="span4" name="yExp" ng-model="skillInfo.yExpVal" placeholder="Year of Experience" required>
+                            <hr>
+                        </div>
+                        <button type="button" class="btn btn-default" ng-click="addSkill()">
+                          Add Another Skill Info
+                        </button>
+                        <hr>
+                        <button type="submit" name="submit" class="btn btn-info btn-block">Submit</button>
+        			</form>    
+        		</div>
+        	</div>
+        </div>
+    </div>
+</body>
+</html>
